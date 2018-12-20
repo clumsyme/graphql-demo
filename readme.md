@@ -146,7 +146,7 @@ we will get
                             },
                             {
                                 "author": "Leia",
-                                "content": "So Funny~ I liek it."
+                                "content": "So Funny~ I like it."
                             }
                         ]
                     }
