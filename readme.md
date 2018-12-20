@@ -16,13 +16,13 @@ type Tag {
     articles(keyword: String): [Article]
 }
 type Comment {
-    id: ID
+    id: ID!
     author: String
     content: String
 }
 type Query {
-    articles: [Article]
-    tags: [Tag]
+    articles(title: String): [Article]
+    tags(first: Int): [Tag]
 }
 ```
 
