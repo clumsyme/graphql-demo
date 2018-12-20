@@ -21,8 +21,8 @@ const schema = buildSchema(`
         content: String
     }
     type Query {
-        articles: [Article]
-        tags: [Tag]
+        articles(title: String): [Article]
+        tags(first: Int): [Tag]
     }
 `)
 
@@ -109,11 +109,11 @@ function getComment(id) {
 }
 
 const rootValue = {
-    articles: () => {
-        return FAKE_DB.ARTICLE_LIST
+    articles: ({title}) => {
+        return FAKE_DB.ARTICLE_LIST.filter((article) => article.title.includes(title))
     },
-    tags: () => {
-        return FAKE_DB.TAG_LIST
+    tags: ({first}) => {
+        return FAKE_DB.TAG_LIST.slice(0, first)
     }
 }
 
