@@ -2,6 +2,7 @@ const {
     GraphQLString,
     GraphQLID,
     GraphQLList,
+    GraphQLInt,
     GraphQLObjectType,
     GraphQLSchema,
 } = require('graphql')
@@ -128,7 +129,7 @@ const FAKE_DB = {
     COMMENT_LIST: [
         makeComment('1', 'Yan', 'Great Article'),
         makeComment('2', 'Luke', "That's Great"),
-        makeComment('3', 'Leia', 'So Funny~ I liek it.'),
+        makeComment('3', 'Leia', 'So Funny~ I like it.'),
         makeComment('4', 'Frodo', "That' awesome, make react dev easier."),
         makeComment('5', 'Bilbo', 'I like it.'),
     ],
@@ -151,14 +152,26 @@ const Query = new GraphQLObjectType({
     fields: {
         articles: {
             type: GraphQLList(Article),
-            resolve() {
-                return FAKE_DB.ARTICLE_LIST
+            args: {
+                title: {
+                    type: GraphQLString,
+                    defaultValue: '',
+                },
+            },
+            resolve(self, { title }) {
+                return FAKE_DB.ARTICLE_LIST.filter((article) => article.title.includes(title))
             },
         },
         tags: {
             type: GraphQLList(Tag),
-            resolve() {
-                return FAKE_DB.TAG_LIST
+            args: {
+                first: {
+                    type: GraphQLInt,
+                    defaultValue: 1,
+                },
+            },
+            resolve(self, { first }) {
+                return FAKE_DB.TAG_LIST.slice(0, first)
             },
         },
     },

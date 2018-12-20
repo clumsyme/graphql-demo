@@ -90,7 +90,7 @@ const FAKE_DB = {
     COMMENT_LIST: [
         new Comment('1', 'Yan', 'Great Article'),
         new Comment('2', 'Luke', "That's Great"),
-        new Comment('3', 'Leia', 'So Funny~ I liek it.'),
+        new Comment('3', 'Leia', 'So Funny~ I like it.'),
         new Comment('4', 'Frodo', "That' awesome, make react dev easier."),
         new Comment('5', 'Bilbo', 'I like it.'),
     ],
