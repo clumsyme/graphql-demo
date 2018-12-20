@@ -3,6 +3,7 @@ const {
     GraphQLID,
     GraphQLList,
     GraphQLInt,
+    GraphQLNonNull,
     GraphQLObjectType,
     GraphQLSchema,
 } = require('graphql')
@@ -13,7 +14,7 @@ const Article = new GraphQLObjectType({
     name: 'Article',
     fields: () => ({
         id: {
-            type: GraphQLID,
+            type: new GraphQLNonNull(GraphQLID),
         },
         title: {
             type: GraphQLString,
@@ -49,7 +50,7 @@ const Comment = new GraphQLObjectType({
     name: 'Comment',
     fields: {
         id: {
-            type: GraphQLID,
+            type: new GraphQLNonNull(GraphQLID),
         },
         author: {
             type: GraphQLString,
@@ -64,7 +65,7 @@ const Tag = new GraphQLObjectType({
     name: 'Tag',
     fields: () => ({
         id: {
-            type: GraphQLID,
+            type: new GraphQLNonNull(GraphQLID),
         },
         name: {
             type: GraphQLString,

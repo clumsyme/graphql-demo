@@ -16,7 +16,7 @@ const schema = buildSchema(`
         articles(keyword: String): [Article]
     }
     type Comment {
-        id: ID
+        id: ID!
         author: String
         content: String
     }
